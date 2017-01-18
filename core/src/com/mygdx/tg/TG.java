@@ -11,7 +11,8 @@ import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 
-import com.mygdx.screens.MenuScreen;
+import com.mygdx.screens.LobbyScreen;
+import com.mygdx.screens.TestStage;
 
 public class TG extends Game {
 	public Stage stage;
@@ -29,7 +30,7 @@ public class TG extends Game {
                 public boolean touchDown (InputEvent event, float x, float y, int pointer, int button) {
                 	System.out.print("here!");
                 	Stage tempStage = gameRef.stage;
-                    gameRef.stage = new MenuScreen();
+                    gameRef.stage = new LobbyScreen(gameRef);
                     tempStage.dispose();
                     return true;
                 }
@@ -49,6 +50,19 @@ public class TG extends Game {
             }
         }
     }
+	
+	public void StartMiniGame(String gameName) {
+		Stage tempStage = stage;
+        stage = new TestStage(this, 5);
+        tempStage.dispose();
+	}
+	
+	public void ReturnToLobby(boolean didPass) {
+		System.out.println("In Lobby return!");
+		Stage tempStage = stage;
+        stage = new LobbyScreen(this);
+        tempStage.dispose();
+	}
 	
 	@Override
 	public void create () {
