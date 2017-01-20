@@ -19,4 +19,9 @@ public class TestStage extends MiniGame {
 		// TODO Auto-generated method stub
 	}
 
+	@Override
+	public void act()  {
+		super.act();
+	}
+		// Eclipse is dumb
 }
